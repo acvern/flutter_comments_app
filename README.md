@@ -2,4 +2,5 @@
 
 Demo for API interaction in Flutter. 
 
-https://github.com/acvern/flutter_comments_app/assets/14066347/52373313-2f93-4a16-b90e-3ea4aef60eb2
+https://github.com/acvern/flutter_comments_app/assets/14066347/34e9b225-b323-4da1-9f31-9f8aa9043c3e
+

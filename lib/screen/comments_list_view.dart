@@ -10,10 +10,10 @@ class CommentsListView extends StatelessWidget {
     return ListView.builder(
       itemCount: commentDisplayInfo.length,
       itemBuilder: (context, index) {
+        var comment = commentDisplayInfo[index];
         return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          SizedBox(height: (commentDisplayInfo[index].depth == 0 ? 16 : 0)),
-          Text(
-              "${"-" * commentDisplayInfo[index].depth} ${commentDisplayInfo[index].text}"),
+          SizedBox(height: (comment.depth == 0 ? 16 : 0)),
+          Text("${"-" * comment.depth} ${comment.text} ${comment.date}"),
         ]);
       },
     );

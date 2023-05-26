@@ -35,12 +35,18 @@ class CommentsController extends ChangeNotifier {
   List<CommentDisplayInfo> _getCommentTree(
       {required int id, int depth = 0, List<CommentDisplayInfo>? resultList}) {
     resultList = resultList ?? [];
-    resultList
-        .add(CommentDisplayInfo(text: comments[id]?.text ?? "", depth: depth));
+    resultList.add(CommentDisplayInfo(
+      text: comments[id]?.text ?? "",
+      date: comments[id]?.date ?? "",
+      depth: depth,
+    ));
     Set<int> children = commentsChildren[id] ?? {};
     if (children.isNotEmpty) {
       for (var childId in children) {
-        resultList.addAll(_getCommentTree(id: childId, depth: depth + 1));
+        resultList.addAll(_getCommentTree(
+          id: childId,
+          depth: depth + 1,
+        ));
       }
     }
     return resultList;

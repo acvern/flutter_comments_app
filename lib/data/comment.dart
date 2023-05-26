@@ -1,7 +1,7 @@
 class Comment {
-  int id;
+  int? id;
   String text;
-  DateTime date;
+  String date;
   int? parentId;
 
   Comment(
@@ -12,9 +12,9 @@ class Comment {
 
   factory Comment.fromJson(Map<String, dynamic> json) {
     return Comment(
-        id: json['id'],
+        id: int.tryParse(json['id']),
         text: json['text'],
         date: json['date'],
-        parentId: json['parentId']);
+        parentId: int.tryParse(json['parentId'] ?? ""));
   }
 }

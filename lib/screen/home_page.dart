@@ -23,6 +23,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.refresh,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            onPressed: () {
+              commentsController.refresh();
+            },
+          )
+        ],
       ),
       body: Center(
         child: ValueListenableBuilder(

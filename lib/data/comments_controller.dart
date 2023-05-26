@@ -16,7 +16,7 @@ class CommentsController extends ChangeNotifier {
   List<CommentDisplayInfo> get commentsDisplayInfo => _commentsDisplayInfo;
 
   CommentsController() {
-    updateComments();
+    refresh();
   }
 
   void _findCommentsChildren() {
@@ -33,9 +33,8 @@ class CommentsController extends ChangeNotifier {
   }
 
   List<CommentDisplayInfo> _getCommentTree(
-      {required int id,
-      int depth = 0,
-      List<CommentDisplayInfo> resultList = const []}) {
+      {required int id, int depth = 0, List<CommentDisplayInfo>? resultList}) {
+    resultList = resultList ?? [];
     resultList
         .add(CommentDisplayInfo(text: comments[id]?.text ?? "", depth: depth));
     Set<int> children = commentsChildren[id] ?? {};
@@ -57,7 +56,7 @@ class CommentsController extends ChangeNotifier {
     }
   }
 
-  Future<void> updateComments() async {
+  Future<void> refresh() async {
     isLoaded.value = false;
     var commentsResponse = await getComments();
     if (commentsResponse.isNotEmpty) {

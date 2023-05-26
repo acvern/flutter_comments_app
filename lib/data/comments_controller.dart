@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_comments_app/api/get_comments.dart';
 
@@ -19,6 +20,11 @@ class CommentsController extends ChangeNotifier {
     refresh();
   }
 
+  List<int> _sortByDate(Iterable<int> ids) {
+    return ids.sorted((a, b) => (comments[a]?.date ?? DateTime.now())
+        .compareTo(comments[b]?.date ?? DateTime.now()));
+  }
+
   void _findCommentsChildren() {
     var ids = comments.keys;
     _commentsChildren = {};
@@ -37,12 +43,13 @@ class CommentsController extends ChangeNotifier {
     resultList = resultList ?? [];
     resultList.add(CommentDisplayInfo(
       text: comments[id]?.text ?? "",
-      date: comments[id]?.date ?? "",
+      date: comments[id]?.dateText ?? "",
       depth: depth,
     ));
     Set<int> children = commentsChildren[id] ?? {};
     if (children.isNotEmpty) {
-      for (var childId in children) {
+      var sortedChildren = _sortByDate(children);
+      for (var childId in sortedChildren) {
         resultList.addAll(_getCommentTree(
           id: childId,
           depth: depth + 1,
@@ -54,7 +61,7 @@ class CommentsController extends ChangeNotifier {
 
   void _getCommentsForDisplay() {
     _commentsDisplayInfo = [];
-    var ids = comments.keys;
+    var ids = _sortByDate(comments.keys);
     for (var id in ids) {
       if (comments[id]?.parentId == null) {
         _commentsDisplayInfo.addAll(_getCommentTree(id: id));

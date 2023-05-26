@@ -54,7 +54,7 @@ class CommentsController extends ChangeNotifier {
 
   void _getCommentsForDisplay() {
     _commentsDisplayInfo = [];
-    var ids = commentsChildren.keys;
+    var ids = comments.keys;
     for (var id in ids) {
       if (comments[id]?.parentId == null) {
         _commentsDisplayInfo.addAll(_getCommentTree(id: id));

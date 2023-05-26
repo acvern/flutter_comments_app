@@ -1,16 +1,5 @@
 # flutter_comments_app
 
-A new Flutter project.
+Demo for API interaction in Flutter. 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://github.com/acvern/flutter_comments_app/assets/14066347/52373313-2f93-4a16-b90e-3ea4aef60eb2
